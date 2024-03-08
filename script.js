@@ -1,11 +1,20 @@
-let todos = [{id:1, title:"Tomorrow is one", dueDate:"2024-04-02"},
+/* let todos = [{id:1, title:"Tomorrow is one", dueDate:"2024-04-02"},
 {id:2, title:"Gems", dueDate:"2024-04-05"}
 ];
+ */
+let getData = JSON.parse(localStorage.getItem("todos"));
+
+let todos = getData;
+
 
 //CREATE
 let btn = document.getElementById("btn");
 
 btn.addEventListener("click", createTodo);
+
+function storeData(){
+    localStorage.setItem("todos", JSON.stringify(todos))
+}
 
 function createTodo(e){
     e.preventDefault();
@@ -17,7 +26,7 @@ function createTodo(e){
 
     //console.log({id:id, title:title, dueDate:dueDate})
     todos.push({id:id, title:title, dueDate:dueDate})
-    
+    storeData();
     renderTodos();
 }
 
@@ -57,6 +66,7 @@ function saveTodo(){
     document.getElementById("btnu").style = "display:none";
     document.getElementById("btn").style = "display:block";
     document.getElementById("title").value = "";
+    storeData();
     renderTodos();
 }
 
@@ -64,6 +74,7 @@ function saveTodo(){
 function deleteTodo(e){
     let id = Number(e.target.id);
     todos =todos.filter((todo)=>todo.id !== id);
+    storeData();
     renderTodos();
 }
 
