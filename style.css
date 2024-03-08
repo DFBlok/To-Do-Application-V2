@@ -11,17 +11,19 @@
 }
 
 h1 {
-    background-color: red;
+    background-color: #944e63;
     color: white;
     text-align: center;
-    /* border-radius: 12px; */
+    border-radius: 12px;
     margin: 5px 0;
     padding: 10px 0;
 }
 
 .view {
-    border: 1px solid brown;
+    border: 5px solid #b47b84;
     margin-top: 20px;
+    padding: 10px 30px;
+    background-color: #caa6a6;
 }
 
 input {
@@ -35,6 +37,8 @@ input {
     display: flex;
     gap: 5px;
     justify-content: center;
+    background-color: #Ffe7e7;
+    padding-bottom: 10px;
 }
 
 button {

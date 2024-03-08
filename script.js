@@ -9,7 +9,7 @@ btn.addEventListener("click", createTodo);
 
 function createTodo(e){
     e.preventDefault();
-    document.getElementById("render").innerHTML = ""; //CLEAR EVERYTHING FROM DISPLAY BOX
+    //document.getElementById("render").innerHTML = ""; //CLEAR EVERYTHING FROM DISPLAY BOX
 
     let title = document.getElementById("title").value;
     let dueDate = document.getElementById("dueDate").value;
@@ -22,6 +22,43 @@ function createTodo(e){
 }
 
 //UPDATE
+let todoIndex;
+
+function updateTodo(e){
+    let updateId = Number(e.target.id);
+    let todo = todos.filter((todo, index)=>{
+        todoIndex = index;
+        return todo.id === updateId
+    });
+    //console.log(todo);
+    let title = document.getElementById("title").value = todo[0].title;
+    //let dueDate = document.getElementById("dueDate").value = todo[0].dueDate; //update date
+    document.getElementById("btn").style = "display:none";
+    document.getElementById("btn");
+    //bring update to do button
+    let updateBtn = document.createElement("button");
+    updateBtn.textContent = "Save Update";
+    updateBtn.id = "btnu";
+    updateBtn.style = "margin-left:12px; margin-top:12px";
+    updateBtn.onclick = saveTodo;
+
+    let form = document.getElementById("form");
+    form.append(updateBtn);
+    
+}
+
+//save to do 
+function saveTodo(){
+    let title = document.getElementById("title").value;
+    let todo = todos[todoIndex]
+    let newObj = {...todo, title}
+    todos[todoIndex] = newObj;
+    
+    document.getElementById("btnu").style = "display:none";
+    document.getElementById("btn").style = "display:block";
+    document.getElementById("title").value = "";
+    renderTodos();
+}
 
 //delete
 function deleteTodo(e){
@@ -43,7 +80,7 @@ function renderTodos(){
         updateBtn.textContent = "Update";
         updateBtn.id = todo.id;
         updateBtn.style = "margin-left: 12px; margin-top: 12px";
-        //updateBtn.onclick = updateBtn;
+        updateBtn.onclick = updateTodo;
         div.append(updateBtn);
 
         //DELETE
