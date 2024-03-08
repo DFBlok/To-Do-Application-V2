@@ -14,4 +14,30 @@ h1 {
     background-color: red;
     color: white;
     text-align: center;
+    /* border-radius: 12px; */
+    margin: 5px 0;
+    padding: 10px 0;
+}
+
+.view {
+    border: 1px solid brown;
+    margin-top: 20px;
+}
+
+input {
+    padding: 10px 20px;
+    font-size: 15px;
+    margin-top: 16px;
+    
+}
+
+#form {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
 }
